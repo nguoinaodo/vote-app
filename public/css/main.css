@@ -1,204 +1,272 @@
-/********* Fonts **********/
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
-}
-
-/****** Main Styling ******/
-
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+/* Navbar style */
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  overflow: hidden;
 }
 
-header {
-	color: #00BCD4;
-	height: 56px;
-	margin: 0 0 14px 0;
-	text-align: center;
+.navbar ul li {
+  float: left;
 }
 
-p {
-	margin: 8px 0 0 0;
+.navbar ul li a, .dropbtn {
+  display: inline-block;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 16px;
 }
 
-.container p {
-	text-align: center;
-	padding: 0;
+.navbar ul li a:hover, .dropdown:hover, .dropbtn:hover {
+  background-color: #aaa;
+  text-decoration: none;
+  color: #111;
 }
 
-/****** Header Styling ******/
-
-header p {
-	margin: 16px 0 5px 0;
+.active {
+  background-color: #4c90af;
 }
 
-.menu {
-	text-decoration: none;
-	padding: 6px;
-	margin: 0;
-	color: #727272;
+.dropdown-nav {
+  display: inline-block;
 }
 
-.menu:visited {
-	color: #727272;
+.dropdown-content {
+  position: absolute;
+  display: none;
+  background-color: #eee;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 2;
 }
 
-.menu:hover {
-	color: #FFA000;
+.navbar .dropdown-content a {
+  display: block;
+  color: #000;
+  text-align: left;
 }
 
-.menu:active {
-	color: #FF630D;
+.dropdown-content a:hover {
+  background-color: #aaa;
 }
 
-header a ~ p {
-	margin: 0;
-	padding: 0;
-	display: inline;
-	color: #ECEFF1;
+.dropdown-nav:hover .dropdown-content {
+  display: block;
 }
 
-#display-name {
-	font-weight: 400;
+/* Poll style*/
+.poll {
+  position: relative;
+  width: 100%;
+  min-height: 590px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #ddd;
+  z-index: 1;
 }
 
-/****** Login Styling ******/
-
-.login {
-	margin: 86px auto 0 auto;
-	text-align: center;
+.row {
+  position: relative;
+  width: 98%;
+  left: 2.5%;
 }
 
-#login-btn {
-	width: 225px;
-	padding: 7px 5px;
+#vote-area {
+  border: px solid gray;
+  height: 100%;
+  padding-top: 60px;
+  background-color: #ddd;
+  margin: 0;
 }
 
-.btn p {
-	margin: 8px 0 0 0;
-	padding: 0;
+form {
+  border: px solid green;
+  padding: 5px;
 }
 
-.btn > img {
-	float: left;
-	margin-left: 10px
+select {
+  width: 50%;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 3px;
 }
 
-/****** Logo Div Styling ******/
-
-img {
-	margin: 0 auto;
-	display: block;
+select:hover {
+  border: 1px solid #77f;
 }
 
-.clementine-text { /* Styling for the Clementine.js text */
-	padding: 0;
-	margin: -25px 0 0 0;
-	font-weight: 500;
-	font-size: 60px;
-	color: #FFA000;
+#vote {
+  width: 100%;
+  margin-top: 10px;
+  padding: 9px;
+  background-color: #26f;
+  border: 1px solid #25f;
+  border-radius: 3px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-/****** Click Styling ******/
-
-.btn-container {	/* Styling for the div that contains the buttons */
-	margin: -10px auto 0 auto;
-	text-align: center;
+#vote:hover {
+  background-color: #15f;
 }
 
-.btn {	/* Styling for buttons */
-	margin: 0 8px;
-	color: white;
-	background-color: #00BCD4;
-	display: inline-block;
-	border: 0;
-	font-size: 14px;
-	border-radius: 3px;
-	padding: 10px 5px;
-	width: 100px;
-	font-weight: 500;
+#share {
+  width: 100%;
+  margin-top: 3px;
+  padding: 9px;
+  background-color: #48f;
+  border: 1px solid #37f;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
 }
 
-.btn:focus {	/* Remove outline when hovering over button */
-	outline: none;
+#share a {
+  text-decoration: none;
+  font-size: 15px;
 }
 
-.btn:active {	/* Scale the button down by 10% when clicking on button */
-	transform: scale(0.9, 0.9);
-	-webkit-transform: scale(0.9, 0.9);
-	-moz-transform: scale(0.9, 0.9);
+#chart-container {
+  position: relative;
+  border: px solid #ddd;
+  padding: 0;
+  height: 500px;
+  z-index: 1;
 }
 
-.btn-delete {	/* Styling for delete button */
-	background-color: #ECEFF1;
-	color: #212121;
+#piechart {
+  position: absolute;
+  border: px solid blue;
+  height: 100%;
+  width: 100%;
+  background: #ddd;
 }
 
-#click-nbr {
-	font-weight: 400;
+#delete {
+  border: 1px solid #f33;
+  width: 100%;
+  margin-top: 6px;
+  padding: 9px;
+  color: white;
+  background-color: #f44;
+  border-radius: 3px;
+  font-size: 16px;
 }
 
-/****** Profile Styling ******/
-
-.github-profile {
-	width: 350px;
-	height: 200px;
-	border-radius: 3px;
-	margin: 86px auto 0 auto;
-	background-color: #EEE;
-	text-align: center;
-	color: #000;
+#delete a, #delete a:hover {
+  color: white;
+  text-decoration: none;
 }
 
-.github-profile p:first-child {
-	padding-top: 16px;
+#delete:hover {
+  background-color: #f33;
+  border: 1px solid #f22;
 }
 
-.github-profile p:nth-child(5) {
-	margin-bottom: 16px
+/* New poll style */
+#newpoll {
+  position: relative;
+  width: 100%;
+  /*left: 2%;*/
+  background-color: #eee;
+  padding: 20px 30px;
+  margin: 20px 0px;
+  min-height: 590px;
+  z-index: 1;
 }
 
-.github-profile p {
-	margin: 0 0 0 16px;
-	text-align: left;
+
+#newpoll .row form input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0px;
+  border-radius: 3px;
+  border: 1px solid #aaa;
 }
 
-.profile-value {
-	font-weight: 400;
+#newpoll .row form button {
+  padding: 8px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
 }
 
-span {
-	font-weight: 500;
+textarea {
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 8px;
 }
 
-.github-profile > img {
-	padding-top: 16px;
-	margin-bottom: 16px;
+#make {
+  width: 100%;
+  margin-top: 8px;
+  border: 1px solid #25f;
+  background-color: #26f;
 }
 
-.github-profile .menu:hover {
-	color: #FFA000;
+#make:hover {
+  background-color: #47f;
 }
 
-.github-profile .menu:active {
-	color: #FF630D;
+#options-list {
+  padding: 30px 50px;
+  border: px solid black;
 }
 
-#menu-divide {
-	color: #FFFFFF;
-	display: inline;
-	margin: 0;
+#options-list ol li {
+  font-size: 18px;
 }
+/* Polls list style */
+.main {
+  position: relative;
+  margin-top: 20px;
+  padding: 30px;
+  width: 100%;
+  /*left: 5%;*/
+  border: px solid green;
+  background-color: #ddd;
+  min-height: 590px;
+  z-index: 1;
+}
+
+.list ul {
+  position: relative;
+  list-style-type: none;
+  overflow: hidden;
+  width: 90%;
+  left: 4%;
+  margin-top: 40px;
+}
+
+.list ul li {
+  
+}
+
+.list ul li a {
+  display: block;
+  text-decoration: none;
+  background-color: #eee;
+  padding: 10px;
+  margin: 3px 0px;
+  text-align: center;
+  color: #444;
+}
+
+.list ul li a:hover {
+  background-color: #fff;
+  
+}
+

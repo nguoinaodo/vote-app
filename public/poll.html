@@ -1,0 +1,58 @@
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
+</head>
+
+<body>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="/controller/poll.client.js"></script>
+  
+  <div id="navbar">
+    <ul>
+      <li id="home"><a href="/polls">Home</a></li>
+      <li id="mypolls"><a href="/mypolls">My Polls</a></li>
+      <li id="newpoll"><a href="/newpoll">New Polls</a></li>
+      <li id="signin"><a href="/auth/github">Sign in</a></li>
+      <li class="dropdown-nav">
+        <div class="dropbtn"></div>
+        <div class="dropdown-content">
+          <a>Log out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div id="poll">
+    <div class="row">
+      <div id="vote-area" class="col-md-4">
+        <!--<div id="question"><input value="Đội bóng nào sẽ vô địch giải Ngoại Hạng Anh năm nay?..........................ddddddddddddddddddddddddddd"></div>-->
+        <form>
+          <h3>Đội bóng nào sẽ vô địch giải Ngoại Hạng Anhassasa năm nay? </h3>
+          <br><br>
+          <b>I'd like a vote for:</b>
+          <select id="choose">
+            <option disabled selected hidden>Choose an option....</option>
+            <option value="a">a</option>
+            <option value="b">b</option>
+            <option value="c">c</option>
+            <option value="d">d</option>
+            <option value="">I'd like a custom option</option>
+          </select>
+          <button id="vote">Vote</button>
+          <button id="share"><a href="#">Share on Twitter</a></button>
+        </form>
+      </div>
+      <div id="chart-container" class="col-md-8">
+        <div id="piechart"></div>
+      </div>
+      <!---->
+      <div class="col-md-8 col-md-offset-4"><button id="delete">Delete this poll</button></div>
+    </div>
+  </div>
+</body>
+
+</html>

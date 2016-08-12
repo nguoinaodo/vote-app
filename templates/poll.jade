@@ -1,0 +1,47 @@
+doctype html
+head
+    title Poll
+    meta(charset="utf-8")
+    link(href="/public/css/main.css" rel="stylesheet" type="text/css")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", type="text/css")
+body
+    script(type="text/javascript" src="https://vote-nguoinaodo.c9users.io/common/ajax-functions.js")
+    script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
+    script(type="text/javascript" src="https://vote-nguoinaodo.c9users.io/controllers/poll.client.js")
+    
+        
+    .navbar 
+        ul
+            if auth 
+                li: a(href="/polls") Home
+                li: a(href="/mypolls") My Polls
+                li: a(href="/newpoll") New Polls
+                li.dropdown-nav
+                    .dropbtn #{displayName}
+                    .dropdown-content
+                        a(href="/signout") Sign out
+            else 
+                li.active: a(href="/polls") Home
+                li: a(href="/auth/github") Sign in
+    .poll
+        .row
+            #vote-area.col-md-4
+                form
+                    h3 #{title}
+                    br 
+                    br
+                    b I'd like a vote for: 
+                    select#choose
+                        option(value=" ", disabled, selected, hidden)#hidden Choose an option....
+                        // options phản hồi bởi ajax
+                        if auth
+                            option(value="")#custom I'd like a custom option
+                    #customInput
+                    button#vote Vote
+                    button#share Share on Twitter
+            #chart-container.col-md-8
+                #piechart
+            
+            if auth && userId == ownerId
+                .col-md-8.col-md-offset-4
+                    button#delete: a(href="/delete/#{pollId}") Delete this poll

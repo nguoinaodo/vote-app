@@ -1,0 +1,37 @@
+doctype html
+head
+    title New Poll
+    meta(charset="utf-8")
+    link(href="/public/css/main.css" rel="stylesheet" type="text/css")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", type="text/css")
+body
+    script(type="text/javascript" src="https://vote-nguoinaodo.c9users.io/common/ajax-functions.js")
+    script(type="text/javascript" src="https://vote-nguoinaodo.c9users.io/controllers/newpoll.client.js")
+    
+    
+    .navbar
+        ul
+            li: a(href="/polls") Home
+            li: a(href="/mypolls") My Polls
+            li: a(href="#", class="active") New Poll
+            li.dropdown-nav
+                a.dropbtn(href="#") #{displayName}
+                .dropdown-content
+                    a(href="/signout") Sign out
+    #newpoll 
+        .row
+            form(method="POST" action="#{action}").col-md-6
+                h1 Create a new poll!
+                b Title:
+                br
+                input(name="title")#title
+                br 
+                b Option (separated by line): 
+                br
+                br
+                textarea(name="options", rows="8")#options
+                br
+                button(type="submit")#make Make
+                opt-list.col-md-6
+                h3 
+                ul
