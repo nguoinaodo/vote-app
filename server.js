@@ -44,7 +44,7 @@ var app = express();
 require('dotenv').load();
 require('./app/config/passport.js')(passport);
 
-mongoose.connect(process.env.MONGO_URI, function() {
+mongoose.connect(process.env.MONGOLAB_URI, function() {
 	console.log('Database successfully connected.');	
 });
 
