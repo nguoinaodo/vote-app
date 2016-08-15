@@ -5,10 +5,6 @@ head
     link(href="/public/css/main.css" rel="stylesheet" type="text/css")
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", type="text/css")
 body
-    script(type="text/javascript" src="https://vote-nguoinaodo.herokuapp.com/common/ajax-functions.js")
-    script(type="text/javascript" src="https://vote-nguoinaodo.herokuapp.com/controllers/newpoll.client.js")
-    
-    
     .navbar
         ul
             li: a(href="/polls") Home
@@ -35,3 +31,6 @@ body
                 opt-list.col-md-6
                 h3 
                 ul
+    
+    script(type="text/javascript" src="#{ajaxFunctionsSrc}")
+    script(type="text/javascript" src="#{newpollSrc}")

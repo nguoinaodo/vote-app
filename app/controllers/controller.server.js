@@ -6,35 +6,28 @@ function Controller() {
 	this.vote = function(req, res) {
 		var pollId = req.params.pollId;
 		var vote = req.body.vote;
-		console.log(vote);
-		console.log(req.url);
-		
-		var query = Polls.findOne({id: pollId});
-		
 		
 		Polls
 			.findOne({id: pollId}, function(err, doc) {
 				if (err) throw err;
 					
-					var options = doc.options;
-					options[vote - 1][1]++;
+				var options = doc.options;
+				options[vote - 1][1]++;
+				
+				doc.options = [];
+				options.forEach(function(option) {
+					doc.options.push(option);	
+				});
+				doc.save(function(err, result) {
+					if (err) throw err;
 					
-					doc.options = [];
-					options.forEach(function(option) {
-						doc.options.push(option);	
-					});
-					doc.save(function(err, result) {
-						if (err) throw err;
-						
-						var options = result.options;
-						
-						options.unshift(['Options', 'Vote']);
-						console.log(options);
-						res.json(options);
-					});
+					var options = result.options;
+					
+					options.unshift(['Options', 'Vote']);
+					console.log(options);
+					res.json(options);
+				});
 			});
-		
-		
 	};
 	
 	this.voteCustom = function(req, res) {
@@ -120,7 +113,7 @@ function Controller() {
 	
 	this.getMyPolls = function(req, res) {
 		Polls
-			.find({userId: req.params.userId}, {id: 1, title: 1}, function(err, docs) {
+			.find({userId: req.user.github.id}, {id: 1, title: 1}, function(err, docs) {
 				if (err) throw err;
 			
 				res.json(docs);
@@ -140,6 +133,8 @@ function Controller() {
 					
 					res.render('poll', {
 						auth: auth,
+						ajaxFunctionsSrc: process.env.APP_URL + 'common/ajax-functions.js',
+						pollSrc: process.env.APP_URL + 'controllers/poll.client.js',
 						displayName: auth? req.user.github.displayName: '',
 						title: doc.title,
 						userId: auth? req.user.github.id: '',
@@ -153,11 +148,10 @@ function Controller() {
 	this.showAllPolls = function(req, res) {
 		var auth = req.isAuthenticated();
 		
-		console.log(auth);
-		
 		res.render('polls', {
 			auth: auth,
-			href: 'polls',
+			ajaxFunctionsSrc: process.env.APP_URL + 'common/ajax-functions.js',
+			pollsSrc: process.env.APP_URL + 'controllers/polls.client.js',
 			displayName: auth? req.user.github.displayName: '',
 			cap1: 'Below are polls hosted by FCC',
 			cap2: auth? 'Select a poll to see the results and vote, or make a new poll!': 'Select a poll to see the results and vote, or sign-in to make a new poll.'
@@ -169,8 +163,9 @@ function Controller() {
 		
 		if (auth) {
 			res.render('polls', {
+				ajaxFunctionsSrc: process.env.APP_URL + 'common/ajax-functions.js',
+				mypollsSrc: process.env.APP_URL + 'controllers/mypolls.client.js',
 				auth: auth,
-				href: 'mypolls',
 				displayName: req.user.github.displayName,
 				cap1: 'Below are polls you own.',
 				cap2: 'Select a poll to see the results and vote, or make a new poll!'
@@ -185,6 +180,8 @@ function Controller() {
 		
 		if (auth) {
 			res.render('newpoll', {
+				ajaxFunctionsSrc: process.env.APP_URL + 'common/ajax-functions.js',
+				newpollSrc: process.env.APP_URL + 'controllers/newpoll.client.js',
 				displayName: req.user.github.displayName,
 				action: '/polls/' + Date.now()
 			});

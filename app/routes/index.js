@@ -58,7 +58,7 @@ module.exports = function(app, passport) {
 	app.route('/delete/:pollId')
 		.get(controller.delete);
 	
-	app.route('/api/:userId/polls')
+	app.route('/api/mypolls')
 		.get(controller.getMyPolls);
 	
 };

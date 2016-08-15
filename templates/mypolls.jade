@@ -8,8 +8,8 @@ body
     .navbar 
         ul
             if auth 
-                li.active: a(href="#") Home
-                li: a(href="/mypolls") My Polls
+                li: a(href="/polls") Home
+                li.active: a(href="#") My Polls
                 li: a(href="/newpoll") New Polls
                 li.dropdown-nav
                     a.dropbtn(href="#") #{displayName}
@@ -26,4 +26,4 @@ body
             ul
     
     script(type="text/javascript" src="#{ajaxFunctionsSrc}")
-    script(type="text/javascript" src="#{pollsSrc}")            
+    script(type="text/javascript" src="#{mypollsSrc}")            
