@@ -162,7 +162,7 @@ function Controller() {
 		var auth = req.isAuthenticated();
 		
 		if (auth) {
-			res.render('polls', {
+			res.render('mypolls', {
 				ajaxFunctionsSrc: process.env.APP_URL + 'common/ajax-functions.js',
 				mypollsSrc: process.env.APP_URL + 'controllers/mypolls.client.js',
 				auth: auth,
